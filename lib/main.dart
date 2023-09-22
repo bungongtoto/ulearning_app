@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 import 'package:ulearning_app/pages/welcome/welcome.dart';
 
 void main() {
@@ -11,13 +13,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Welcome(),
+    return ScreenUtilInit(
+      designSize: Size(MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.height),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        ScreenUtil.init(context);
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              useMaterial3: true,
+              textTheme: TextTheme(bodyMedium: TextStyle(fontSize: 20.sp))),
+          initialRoute: "/",
+          routes: {
+            "/": (context) => Welcome(),
+            "/signIn": (context) => const SignIn()
+          },
+          //home: Welcome(),
+        );
+      },
     );
   }
 }
@@ -26,72 +42,72 @@ final appCount = StateProvider<int>((ref) {
   return 1;
 });
 
-class MyHomePage extends ConsumerWidget {
-  const MyHomePage({super.key});
+// class MyHomePage extends ConsumerWidget {
+//   const MyHomePage({super.key});
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    int count = ref.watch(appCount);
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Riverpod App'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              count.toString(),
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          FloatingActionButton(
-            heroTag: 'one',
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => const SecondPage()));
-            },
-            tooltip: 'Increment',
-            child: const Icon(Icons.arrow_right_rounded),
-          ),
-          FloatingActionButton(
-            heroTag: 'two',
-            onPressed: () {
-              ref.read(appCount.notifier).state++;
-            },
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     int count = ref.watch(appCount);
+//     return Scaffold(
+//       appBar: AppBar(
+//         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+//         title: const Text('Riverpod App'),
+//         centerTitle: true,
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: <Widget>[
+//             const Text(
+//               'You have pushed the button this many times:',
+//             ),
+//             Text(
+//               count.toString(),
+//               style: Theme.of(context).textTheme.headlineMedium,
+//             ),
+//           ],
+//         ),
+//       ),
+//       floatingActionButton: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//         children: [
+//           FloatingActionButton(
+//             heroTag: 'one',
+//             onPressed: () {
+//               Navigator.of(context).push(MaterialPageRoute(
+//                   builder: (BuildContext context) => const SecondPage()));
+//             },
+//             tooltip: 'Increment',
+//             child: const Icon(Icons.arrow_right_rounded),
+//           ),
+//           FloatingActionButton(
+//             heroTag: 'two',
+//             onPressed: () {
+//               ref.read(appCount.notifier).state++;
+//             },
+//             tooltip: 'Increment',
+//             child: const Icon(Icons.add),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
-class SecondPage extends ConsumerWidget {
-  const SecondPage({super.key});
+// class SecondPage extends ConsumerWidget {
+//   const SecondPage({super.key});
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    int count = ref.watch(appCount);
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Text(
-          '$count',
-          style: const TextStyle(fontSize: 30),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     int count = ref.watch(appCount);
+//     return Scaffold(
+//       appBar: AppBar(),
+//       body: Center(
+//         child: Text(
+//           '$count',
+//           style: const TextStyle(fontSize: 30),
+//         ),
+//       ),
+//     );
+//   }
+// }
