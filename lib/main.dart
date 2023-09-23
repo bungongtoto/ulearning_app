@@ -14,8 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height),
+      designSize: const Size(392.72727272727275, 783.2727272727273),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -23,9 +22,9 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-              textTheme: TextTheme(bodyMedium: TextStyle(fontSize: 20.sp))),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
           initialRoute: "/",
           routes: {
             "/": (context) => Welcome(),

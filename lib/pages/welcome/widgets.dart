@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/widgets/app_shadows.dart';
-import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 
 import '../../common/widgets/text_widgets.dart';
 
