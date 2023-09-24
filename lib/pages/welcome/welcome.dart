@@ -67,10 +67,12 @@ class Welcome extends ConsumerWidget {
                     dotsCount: 3,
                     mainAxisAlignment: MainAxisAlignment.center,
                     decorator: DotsDecorator(
-                        size: const Size.square(9.0),
-                        activeSize: const Size(18.0, 8.0),
-                        activeShape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.w))),
+                      size: const Size.square(9.0),
+                      activeSize: const Size(18.0, 8.0),
+                      activeShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.w),
+                      ),
+                    ),
                   ),
                 ),
               ],
