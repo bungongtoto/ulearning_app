@@ -3,7 +3,7 @@ import 'package:ulearning_app/common/utils/app_colors.dart';
 
 import 'text_widgets.dart';
 
-AppBar buildAppbar() {
+AppBar buildAppbar({String title = "Login"}) {
   return AppBar(
     bottom: PreferredSize(
       preferredSize: const Size.fromHeight(1),
@@ -12,7 +12,7 @@ AppBar buildAppbar() {
         height: 1,
       ),
     ),
-    title: text16Normal(text: "Login", color: AppColors.primaryText),
+    title: text16Normal(text: title, color: AppColors.primaryText),
     centerTitle: true,
   );
 }

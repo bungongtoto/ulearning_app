@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'welcome_notifier.dart';
+part of 'global_loader.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$indexDotHash() => r'd6ca827c77ff6a4d763c2dc357285caca92870d1';
+String _$appLoaderHash() => r'2412315cde622e562d14036fa10e013d084067b4';
 
-/// See also [IndexDot].
-@ProviderFor(IndexDot)
-final indexDotProvider = AutoDisposeNotifierProvider<IndexDot, int>.internal(
-  IndexDot.new,
-  name: r'indexDotProvider',
+/// See also [AppLoader].
+@ProviderFor(AppLoader)
+final appLoaderProvider = AutoDisposeNotifierProvider<AppLoader, bool>.internal(
+  AppLoader.new,
+  name: r'appLoaderProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$indexDotHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$appLoaderHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$IndexDot = AutoDisposeNotifier<int>;
+typedef _$AppLoader = AutoDisposeNotifier<bool>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

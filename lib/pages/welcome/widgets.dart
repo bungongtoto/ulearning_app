@@ -64,7 +64,7 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
     child: Container(
       width: 325.w,
       height: 50.h,
-      margin: EdgeInsets.only(top: 100.h, left: 25.w, right: 25.w),
+      margin: EdgeInsets.only(top: 90.h, left: 25.w, right: 25.w),
       decoration: appBoxShadow(),
       child: Center(
         child: text16Normal(
