@@ -73,6 +73,14 @@ class SignUpController {
         );
         context.pop();
       }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        toastInfo(msg: "the password id too weak");
+      } else if (e.code == 'email-already-in-use') {
+        toastInfo(msg: "This email address is already i use");
+      } else if (e.code == 'user-not-found') {
+        toastInfo(msg: "User not found");
+      }
     } catch (e) {
       if (kDebugMode) {
         developer.log(e.toString());
