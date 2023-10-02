@@ -6,6 +6,7 @@ import 'package:ulearning_app/common/widgets/image_widgets.dart';
 import 'text_widgets.dart';
 
 Widget appTextField({
+  TextEditingController? textController,
   String text = "",
   String iconName = "",
   String hintText = "Type in your info",
@@ -33,15 +34,17 @@ Widget appTextField({
                 child: appImage(imagePath: iconName),
               ),
               SizedBox(
-                width: 270.w,
+                width: 275.w,
                 height: 50.h,
                 child: TextField(
+                  controller: textController,
                   onChanged: (value) => func!(value),
                   keyboardType: TextInputType.multiline,
                   maxLines: 1,
                   autocorrect: false,
                   obscureText: obscureText,
                   decoration: InputDecoration(
+                    isDense: true,
                     hintText: hintText,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide(

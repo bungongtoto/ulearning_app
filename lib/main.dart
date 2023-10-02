@@ -1,20 +1,25 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app/common/routes/routes.dart';
 import 'package:ulearning_app/common/utils/app_styles.dart';
-import 'package:ulearning_app/firebase_options.dart';
+import 'package:ulearning_app/global.dart';
+import 'package:ulearning_app/pages/application/application.dart';
 import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 import 'package:ulearning_app/pages/register/sign_up.dart';
 import 'package:ulearning_app/pages/welcome/welcome.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Global.init();
   runApp(const ProviderScope(child: MyApp()));
 }
+
+var routesMap = {
+  "/": (context) => Welcome(),
+  "/signIn": (context) => const SignIn(),
+  "/signUp": (context) => const SignUp(),
+  "/application": (context) => const Application(),
+};
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -31,12 +36,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: AppTheme.appThemeData,
           initialRoute: "/",
-          routes: {
-            "/": (context) => Welcome(),
-            "/signIn": (context) => const SignIn(),
-            "/signUp": (context) => const SignUp(),
-          },
-          //home: Welcome(),
+          onGenerateRoute: AppPages.generateRouteSettings,
         );
       },
     );

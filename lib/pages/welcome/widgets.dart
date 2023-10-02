@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
+import 'package:ulearning_app/common/utils/constants.dart';
 import 'package:ulearning_app/common/widgets/app_shadows.dart';
+import 'package:ulearning_app/global.dart';
 
 import '../../common/widgets/text_widgets.dart';
 
@@ -49,6 +51,10 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
           curve: Curves.linear,
         );
       } else {
+        // remembers if we are first time or not
+        Global.storageService
+            .setBool(AppConstants.STORAGE_DEVICE_OPEN_KEY, true);
+
         Navigator.pushNamed(
           context,
           "/signIn",

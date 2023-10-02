@@ -81,6 +81,8 @@ class SignUpController {
       } else if (e.code == 'user-not-found') {
         toastInfo(msg: "User not found");
       }
+
+      developer.log(e.code);
     } catch (e) {
       if (kDebugMode) {
         developer.log(e.toString());
