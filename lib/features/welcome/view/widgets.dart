@@ -5,7 +5,7 @@ import 'package:ulearning_app/common/utils/constants.dart';
 import 'package:ulearning_app/common/widgets/app_shadows.dart';
 import 'package:ulearning_app/global.dart';
 
-import '../../common/widgets/text_widgets.dart';
+import '../../../common/widgets/text_widgets.dart';
 
 Widget appOnboardingPage(
   PageController controller,

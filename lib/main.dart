@@ -4,22 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/routes/routes.dart';
 import 'package:ulearning_app/common/utils/app_styles.dart';
 import 'package:ulearning_app/global.dart';
-import 'package:ulearning_app/pages/application/application.dart';
-import 'package:ulearning_app/pages/sign_in/sign_in.dart';
-import 'package:ulearning_app/pages/register/sign_up.dart';
-import 'package:ulearning_app/pages/welcome/welcome.dart';
 
 Future<void> main() async {
   await Global.init();
   runApp(const ProviderScope(child: MyApp()));
 }
 
-var routesMap = {
-  "/": (context) => Welcome(),
-  "/signIn": (context) => const SignIn(),
-  "/signUp": (context) => const SignUp(),
-  "/application": (context) => const Application(),
-};
+final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -33,6 +24,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         ScreenUtil.init(context);
         return MaterialApp(
+          navigatorKey: navKey,
           title: 'Flutter Demo',
           theme: AppTheme.appThemeData,
           initialRoute: "/",

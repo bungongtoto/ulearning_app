@@ -6,10 +6,10 @@ import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/widgets/app_text_fields.dart';
 import 'package:ulearning_app/common/widgets/button_widgets.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/pages/register/notifier/register_notifier.dart';
-import 'package:ulearning_app/pages/register/sign_up_controller.dart';
+import 'package:ulearning_app/features/sign_up/controller/sign_up_controller.dart';
+import 'package:ulearning_app/features/sign_up/provider/notifier/register_notifier.dart';
 
-import '../../common/widgets/app_bar.dart';
+import '../../../common/widgets/app_bar.dart';
 
 class SignUp extends ConsumerStatefulWidget {
   const SignUp({super.key});

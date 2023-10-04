@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/widgets/app_shadows.dart';
-import 'package:ulearning_app/pages/application/widgets/widgets.dart';
-import 'dart:developer' as developer;
+import 'package:ulearning_app/features/application/provider/notifier/application_nav_notifier.dart';
+import 'package:ulearning_app/features/application/view/widgets/widgets.dart';
 
-class Application extends StatefulWidget {
+class Application extends ConsumerStatefulWidget {
   const Application({super.key});
 
   @override
-  State<Application> createState() => _ApplicationState();
+  ConsumerState<Application> createState() => _ApplicationState();
 }
 
-class _ApplicationState extends State<Application> {
-  int index = 0;
+class _ApplicationState extends ConsumerState<Application> {
   @override
   Widget build(BuildContext context) {
+    ref.watch(applicationNavIndexProvider);
+    int index = ref.watch(applicationNavIndexProvider);
     return Container(
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
-          body: Container(),
+          body: appScreens(index: index),
           bottomNavigationBar: Container(
             width: 392.h,
             height: 55.h,
@@ -28,10 +30,9 @@ class _ApplicationState extends State<Application> {
             child: BottomNavigationBar(
               currentIndex: index,
               onTap: (value) {
-                setState(() {
-                  index = value;
-                });
-                developer.log(value.toString());
+                ref
+                    .read(applicationNavIndexProvider.notifier)
+                    .changeIndex(value);
               },
               selectedItemColor: AppColors.primaryElement,
               elevation: 0,
