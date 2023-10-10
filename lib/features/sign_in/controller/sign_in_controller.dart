@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ulearning_app/common/entities/user.dart';
+import 'package:ulearning_app/common/models/user.dart';
 import 'package:ulearning_app/common/global_loader/global_loader.dart';
 import 'package:ulearning_app/common/utils/constants.dart';
 import 'package:ulearning_app/common/widgets/popup_messages.dart';
@@ -97,7 +99,11 @@ class SignInController {
       // try to remember user info
       Global.storageService.setString(
         AppConstants.STORAGE_USER_PROFILE_KEY,
-        "123",
+        jsonEncode({
+          'name': 'BungongToto',
+          'email': 'kingsley.bungong@ictuniversity.com',
+          'age': 34,
+        }),
       );
       Global.storageService.setString(
         AppConstants.STORAGE_USER_TOKEN_KEY,

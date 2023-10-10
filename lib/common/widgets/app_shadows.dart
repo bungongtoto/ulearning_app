@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
+import 'package:ulearning_app/common/utils/imege_res.dart';
 
 BoxDecoration appBoxShadow({
   Color color = AppColors.primaryElement,
   double radius = 15,
   double sR = 1,
   double bR = 2,
-  BoxBorder? border,
+  BoxBorder? boxBorder,
 }) {
   return BoxDecoration(
       color: color,
       borderRadius: BorderRadius.circular(radius),
-      border: border,
+      border: boxBorder,
       boxShadow: [
         BoxShadow(
           color: Colors.grey.withOpacity(0.1),
@@ -59,4 +60,31 @@ BoxDecoration appBoxDecorationTextField({
       color: borderColor,
     ),
   );
+}
+
+class AppBoxDecorationImage extends StatelessWidget {
+  final double width;
+  final double height;
+  final String imagePath;
+  const AppBoxDecorationImage({
+    super.key,
+    this.width = 35,
+    this.height = 35,
+    this.imagePath = ImageRes.defaultImg,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width.h,
+      height: height.h,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.h),
+        image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(imagePath),
+        ),
+      ),
+    );
+  }
 }
